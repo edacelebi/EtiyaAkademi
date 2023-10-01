@@ -5,6 +5,7 @@ import com.etiya.rentacarr.business.requests.CreateBrandRequest;
 import com.etiya.rentacarr.business.requests.UpdateBrandRequest;
 import com.etiya.rentacarr.business.responses.GetAllBrandsResponse;
 import com.etiya.rentacarr.business.responses.GetByIdBrandResponse;
+import com.etiya.rentacarr.business.rules.BrandBusinessRules;
 import com.etiya.rentacarr.core.utilities.mappers.ModelMapperService;
 import com.etiya.rentacarr.dataAccess.abstracts.BrandRepository;
 import com.etiya.rentacarr.entities.concretes.Brand;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 public class BrandManager implements BrandService {
     private BrandRepository brandRepository;
     private ModelMapperService modelMapperService;
+    private BrandBusinessRules brandBusinessRules;
 
 
     @Override
@@ -40,6 +42,8 @@ public class BrandManager implements BrandService {
 
     @Override
     public void add(CreateBrandRequest createBrandRequest) {
+        this.brandBusinessRules.checkIfBrandNameExists(createBrandRequest.getName());
+
         Brand brand = this.modelMapperService.forRequest().map(createBrandRequest,Brand.class);
 
         this.brandRepository.save(brand);
