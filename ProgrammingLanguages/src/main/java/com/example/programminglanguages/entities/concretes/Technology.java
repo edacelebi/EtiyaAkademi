@@ -1,16 +1,15 @@
 package com.example.programminglanguages.entities.concretes;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Table(name = "programmingLanguages")
+@Table(name = "technologies")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ProgrammingLanguage {
+
+public class Technology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -18,6 +17,4 @@ public class ProgrammingLanguage {
 
     @Column(name = "name")
     private String name;
-
 }
-

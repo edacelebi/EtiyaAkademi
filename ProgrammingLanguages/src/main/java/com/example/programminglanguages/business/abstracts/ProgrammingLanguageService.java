@@ -1,20 +1,23 @@
 package com.example.programminglanguages.business.abstracts;
 
-import com.example.programminglanguages.entities.concretes.ProgrammingLanguage;
+import com.example.programminglanguages.business.requests.CreateProgrammingLanguageRequest;
+import com.example.programminglanguages.business.requests.UpdateProgrammingLanguageRequest;
+import com.example.programminglanguages.business.responses.GetAllProgrammingLanguageResponse;
+import com.example.programminglanguages.business.responses.GetByIdProgrammingLanguageResponse;
 
 import java.util.List;
 
 public interface ProgrammingLanguageService {
 
-    void add(ProgrammingLanguage programmingLanguage) throws Exception;
+    List<GetAllProgrammingLanguageResponse> getAll();
 
-    void delete(int id) throws Exception;
+    GetByIdProgrammingLanguageResponse getById(int id);
 
-    void update(int id , ProgrammingLanguage programmingLanguage) throws Exception;
+    void add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
 
-    List<ProgrammingLanguage> getAll();
+    void update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
 
-    ProgrammingLanguage getById(int id);
+    void delete(int id);
 
 }
 
