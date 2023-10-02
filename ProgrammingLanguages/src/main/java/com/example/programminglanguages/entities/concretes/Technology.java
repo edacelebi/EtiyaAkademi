@@ -17,4 +17,8 @@ public class Technology {
 
     @Column(name = "name")
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "Programming_language_id")
+    private ProgrammingLanguage ProgrammingLanguage;
 }
